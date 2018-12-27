@@ -78,15 +78,17 @@ func xuanze(arr []int) {
 }
 
 // 插入排序
-func charu(buf []int) {
+func chaRu(arr []int) {
 	changeTimes := 0
 	compareTimes := 0
-	for i := 1; i < len(buf); i++ {
+	for i := 1; i < len(arr); i++ {
+
 		for j := i; j > 0; j-- {
+			//只与前面的对比
 			compareTimes++
-			if buf[j] < buf[j-1] {
+			if arr[j] < arr[j-1] {
 				changeTimes++
-				buf[j-1], buf[j] = buf[j], buf[j-1]
+				arr[j-1], arr[j] = arr[j], arr[j-1]
 			} else {
 				break
 			}
@@ -94,43 +96,45 @@ func charu(buf []int) {
 	}
 	fmt.Println("插入比较次数: ", compareTimes)
 	fmt.Println("插入交换次数: ", changeTimes)
-	fmt.Println(buf)
+	fmt.Println(arr)
 }
 
 // 希尔排序
-func xier(buf []int) {
+func xiEr(buf []int) {
+	changeTimes := 0
+	compareTimes := 0
 	times := 0
-	tmp := 0
 	length := len(buf)
 	incre := length
 	// fmt.Println("buf: ", buf)
 	for {
 		incre /= 2
-		for k := 0; k < incre; k++ { //根据增量分为若干子序列
+
+		for k := 0; k < incre; k++ {
+			//根据增量分为若干子序列
+			//子序列中的内容个数，相当于直接插入排序的第一次遍历，代表插入的轮数
 			for i := k + incre; i < length; i += incre {
+				//子序列的序列个数遍历，获取每个子序列下标的上限
 				for j := i; j > k; j -= incre {
-					// fmt.Println("j: ", j, " data: ", buf[j], " j-incre: ", j-incre, " data: ", buf[j-incre])
+					//倒序遍历子序列的内容，进行直接插入法排序
+					compareTimes++
 					times++
 					if buf[j] < buf[j-incre] {
-						tmp = buf[j-incre]
-						buf[j-incre] = buf[j]
-						buf[j] = tmp
+						buf[j-incre], buf[j] = buf[j], buf[j-incre]
+						changeTimes++
 					} else {
 						break
 					}
 				}
-				// fmt.Println("middle: ", buf)
 			}
-			// fmt.Println("outer: ", buf)
 		}
-		// fmt.Println("outer outer: ", buf, " incre: ", incre)
-
 		if incre == 1 {
 			break
 		}
 	}
-	// fmt.Println("after: ", buf)
-	fmt.Println("xier times: ", times)
+	fmt.Println("插入比较次数: ", compareTimes)
+	fmt.Println("插入交换次数: ", changeTimes)
+	fmt.Println(buf)
 }
 
 // 快速排序
@@ -150,6 +154,7 @@ func kuai(a []int, l, r int) {
 		if i < j {
 			a[i] = a[j]
 			i++
+			fmt.Println(a)
 		}
 
 		for i < j && a[i] < key { //从左向右找第一个大于key的值
@@ -158,12 +163,14 @@ func kuai(a []int, l, r int) {
 		if i < j {
 			a[j] = a[i]
 			j--
+			fmt.Println(a)
 		}
 	}
 	//i == j
 	a[i] = key
 	kuai(a, l, i-1)
 	kuai(a, i+1, r)
+	fmt.Println(a)
 }
 
 //归并排序
@@ -262,5 +269,7 @@ func main() {
 	fmt.Println("排序后：")
 	//maopao1(array)
 	//maopao(array)
-	xuanze(array)
+	//xuanze(array)
+	//chaRu(array)
+	kuaisu(array)
 }
