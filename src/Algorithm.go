@@ -139,6 +139,7 @@ func xiEr(buf []int) {
 
 // 快速排序
 func kuaisu(buf []int) {
+	fmt.Printf("iiiii, i=%d, j=%d\n", 0, len(buf)-1)
 	kuai(buf, 0, len(buf)-1)
 }
 
@@ -155,6 +156,7 @@ func kuai(a []int, l, r int) {
 			a[i] = a[j]
 			i++
 			fmt.Println(a)
+			fmt.Printf("iiiii, i=%d, j=%d\n", i, j)
 		}
 
 		for i < j && a[i] < key { //从左向右找第一个大于key的值
@@ -164,10 +166,14 @@ func kuai(a []int, l, r int) {
 			a[j] = a[i]
 			j--
 			fmt.Println(a)
+			fmt.Printf("jjjjj, i=%d, j=%d\n", i, j)
 		}
 	}
 	//i == j
 	a[i] = key
+	fmt.Println(key)
+	fmt.Println(a)
+	fmt.Printf("key, i=%d, j=%d\n", i, j)
 	kuai(a, l, i-1)
 	kuai(a, i+1, r)
 	fmt.Println(a)
@@ -259,7 +265,7 @@ func MinHeapFixdown(a []int, i, n int) {
 func main() {
 	rand.Seed(time.Now().UnixNano())
 	//array := make([]int, 20)
-	array := []int{878, 412, 304, 220, 828, 142, 68, 625, 778, 462, 231, 679, 478, 592, 935, 492, 698, 414, 206, 389}
+	array := []int{878, 412, 304, 220, 828, 142, 68, 625, 778, 462, 231, 679, 878, 592, 935, 492, 698, 414, 206, 389}
 	//for i := 0; i < 20; i++ {
 	//	array[i] = rand.Intn(1000)
 	//}
