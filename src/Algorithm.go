@@ -183,9 +183,13 @@ func kuai(a []int, l, r int) {
 func guibing(buf []int) {
 	tmp := make([]int, len(buf))
 	merge_sort(buf, 0, len(buf)-1, tmp)
+	fmt.Println(buf)
 }
 
 func merge_sort(a []int, first, last int, tmp []int) {
+	fmt.Println(a)
+	fmt.Println(tmp)
+	fmt.Printf("first = %d, last = %d\n", first, last)
 	if first < last {
 		middle := (first + last) / 2
 		merge_sort(a, first, middle, tmp)       //左半部分排好序
@@ -265,7 +269,8 @@ func MinHeapFixdown(a []int, i, n int) {
 func main() {
 	rand.Seed(time.Now().UnixNano())
 	//array := make([]int, 20)
-	array := []int{878, 412, 304, 220, 828, 142, 68, 625, 778, 462, 231, 679, 878, 592, 935, 492, 698, 414, 206, 389}
+	array := []int{878, 412, 304, 220, 828, 142, 68, 625}
+	//array := []int{878, 412, 304, 220, 828, 142, 68, 625, 778, 462, 231, 679, 878, 592, 935, 492, 698, 414, 206, 389}
 	//for i := 0; i < 20; i++ {
 	//	array[i] = rand.Intn(1000)
 	//}
@@ -277,5 +282,6 @@ func main() {
 	//maopao(array)
 	//xuanze(array)
 	//chaRu(array)
-	kuaisu(array)
+	//kuaisu(array)
+	guibing(array)
 }
