@@ -1,4 +1,4 @@
-package main
+package 基础
 
 import (
 	"bufio"
