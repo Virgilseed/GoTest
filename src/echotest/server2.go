@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 	"net/http"
 )
 
@@ -13,6 +14,8 @@ type User struct {
 
 func main() {
 	e := echo.New()
+	e.Use(middleware.Logger())
+	//e.Use(middleware.Recover())
 
 	e.GET("/", func(context echo.Context) error {
 		fmt.Println("ssss")
@@ -29,7 +32,7 @@ func main() {
 	//e.PUT("/users/:id", updateUser)
 	//e.DELETE("/user/:id", deleteUser)
 	//e.Static("/statics", "static")
-	e.File("/text.txt", "static/text.txt")
+	//e.File("/statics", "static")
 	e.Logger.Fatal(e.Start(":1323"))
 
 }
