@@ -26,7 +26,7 @@ func DoWork(start int, end int) {
 
 	}
 	for i := start; i <= end; i++ {
-		fmt.Printf("第%d个页面爬取完成\n", <- page)
+		fmt.Printf("第%d个页面爬取完成\n", <-page)
 	}
 }
 
@@ -50,7 +50,7 @@ func HttpGet(url string) (result string, err error) {
 }
 
 func SpiderPape(i int, page chan int) {
-	url := "https://tieba.baidu.com/f?kw=%E7%BB%9D%E5%9C%B0%E6%B1%82%E7%94%9F&ie=utf-8&pn=" + strconv.Itoa((i - 1) * 50)
+	url := "https://tieba.baidu.com/f?kw=%E7%BB%9D%E5%9C%B0%E6%B1%82%E7%94%9F&ie=utf-8&pn=" + strconv.Itoa((i-1)*50)
 	fmt.Printf("正在爬取第%d页网页：%s\n", i, url)
 	result, err := HttpGet(url)
 	if err != nil {
